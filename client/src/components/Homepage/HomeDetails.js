@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 // import Col from 'react-bootstrap/Col';
 // import Row from 'react-bootstrap/Row';
 // import "./ExploreLibrary.css"
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function HomeDetails() {
   const { id } = useParams();
@@ -13,7 +14,7 @@ function HomeDetails() {
   useEffect(() => {
     async function fetchHomeDetails() {
       try {
-        const response = await axios.get(`http://localhost:3636/homes/home/${id}`);
+        const response = await axios.get(`${apiUrl}/homes/home/${id}`);
         setHome(response.data);
       } catch (error) {
         console.log('Error fetching home details', error);

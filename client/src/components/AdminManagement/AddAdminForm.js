@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function AddAdminForm() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ function AddAdminForm() {
     const confirmDelete = window.confirm("Are you sure you want to delete this admin?")
     if (confirmDelete) {
       try {
-        axios.delete(`http://localhost:3636/admin/admins/${id}`).then((response) =>{
+        axios.delete(`${apiUrl}/admin/admins/${id}`).then((response) =>{
           console.log(response.data);
           getAdmin(); // Fetch updated list of users after deleting
         });
@@ -26,7 +27,7 @@ function AddAdminForm() {
 
   const getAdmin = async () => {
     try {
-      const response = await axios.get("http://localhost:3636/admin/admins");
+      const response = await axios.get(`${apiUrl}/admin/admins`);
       setAdmins(response.data);
     } catch (error) {
       console.log({error: "Error fetching user"});
@@ -41,7 +42,7 @@ function AddAdminForm() {
   const addAdmin = async() =>{
     
     try {
-      const response = await axios.post("http://localhost:3636/admin/", {email, password})
+      const response = await axios.post(`${apiUrl}/admin/`, {email, password})
       console.log(response.data)
       navigate("/admin-profile/admin/create")
     } catch (error) {

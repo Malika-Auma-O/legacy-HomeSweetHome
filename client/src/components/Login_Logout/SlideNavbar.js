@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const SlideNavbar = () => {
   const [email, setEmail] = useState("");
@@ -19,7 +20,7 @@ const SlideNavbar = () => {
 
   function handleSignup(event) {
     event.preventDefault(); // Prevent default form submission
-    axios.post("http://localhost:3636/user/signup", { email, password })
+    axios.post(`${apiUrl}/user/signup`, { email, password })
       .then(({ data }) => {
         // console.log(data);
         if (data.token) {
@@ -33,7 +34,7 @@ const SlideNavbar = () => {
 
   function handleLogin(event) {
     event.preventDefault(); // Prevent default form submission
-    axios.post("http://localhost:3636/user/login", { email, password })
+    axios.post(`${apiUrl}/user/login`, { email, password })
       .then(({ data }) => {
         // console.log(data);
         if (data.token) {

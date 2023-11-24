@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function UpdateHome() {
   const { id } = useParams();
@@ -15,7 +16,7 @@ function UpdateHome() {
   function Update(e) {
     e.preventDefault();
     axios
-      .put(`http://localhost:3636/homes/${id}`, {
+      .put(`${apiUrl}/homes/${id}`, {
         image,
         title,
         city,
@@ -32,7 +33,7 @@ function UpdateHome() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3636/homes/${id}`)
+      .get(`${apiUrl}/homes/${id}`)
       .then((response) => {
         console.log(response.data);
         const { image, title, city, address, description, price } = response.data;

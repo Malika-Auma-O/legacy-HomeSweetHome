@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function AdminSlideNav() {
   const [email, setEmail] = useState("");
@@ -10,7 +11,7 @@ function AdminSlideNav() {
   const navigate = useNavigate();
 
   function handleLogin() {
-    axios.post("http://localhost:3636/admin/login", {email, password}).then(({data}) => {
+    axios.post(`${apiUrl}/admin/login`, {email, password}).then(({data}) => {
       if (data.token) {
         localStorage.setItem("token", data.token);
         navigate("/admin-profile")

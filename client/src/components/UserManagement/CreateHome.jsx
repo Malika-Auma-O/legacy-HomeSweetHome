@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function CreateHome() {
   const {userId} = useParams();
@@ -17,7 +18,7 @@ function CreateHome() {
   const Submit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3636/homes/", {
+      .post(`${apiUrl}/homes/`, {
         image,
         title,
         city,

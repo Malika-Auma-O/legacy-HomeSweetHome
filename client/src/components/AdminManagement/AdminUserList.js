@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function UsersList() {
 
@@ -9,7 +10,7 @@ function UsersList() {
     const confirmDelete = window.confirm("Are you sure you want to delete this user?")
     if (confirmDelete) {
       try {
-        axios.delete(`http://localhost:3636/admin/user/${id}`).then((response) =>{
+        axios.delete(`${apiUrl}/admin/user/${id}`).then((response) =>{
           console.log(response.data);
           getUsers(); // Fetch updated list of users after deleting
         });
@@ -21,7 +22,7 @@ function UsersList() {
 
   const getUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:3636/admin/users");
+      const response = await axios.get(`${apiUrl}/admin/users`);
       setUsers(response.data);
     } catch (error) {
       console.log({error: "Error fetching user"});

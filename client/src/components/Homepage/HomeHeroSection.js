@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import "../ExploreLibrary.css"
 import { Link } from 'react-router-dom';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function HomeHeroSection() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -14,7 +15,7 @@ function HomeHeroSection() {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://localhost:3636/homes/search/${encodeURIComponent(searchQuery)}`);
+      const response = await axios.get(`${apiUrl}/homes/search/${encodeURIComponent(searchQuery)}`);
       const data = response.data;
       console.log({data})
       setSearchResults(data);

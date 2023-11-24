@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import { Button, ButtonGroup } from "react-bootstrap";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useNavigate } from "react-router-dom";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function UserProfile() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ function UserProfile() {
 
   function getMyHomes(userId) {
     
-    axios.get("http://localhost:3636/homes/" + userId).then(({ data }) => {
+    axios.get(`${apiUrl}/homes/` + userId).then(({ data }) => {
       // console.log(data);
       setHomes(data);
     });
@@ -24,7 +25,7 @@ function UserProfile() {
     const confirmDelete = window.confirm("Are you sure you want to delete this home?")
     if (confirmDelete) {
       axios
-      .delete(`http://localhost:3636/homes/${id}`)
+      .delete(`${apiUrl}/homes/${id}`)
       .then((response) => {
         console.log("Home deleted successfully:", response.data);
         // After deleting the home, fetch the updated list of homes
@@ -47,7 +48,7 @@ function UserProfile() {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       axios
-        .post("http://localhost:3636/user/verify", {
+        .post(`${apiUrl}/user/verify`, {
           token: localStorage.getItem("token"),
         })
         .then(({ data }) => {

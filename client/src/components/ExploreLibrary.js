@@ -5,13 +5,14 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import "./ExploreLibrary.css";
 import { Link } from 'react-router-dom';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function ExploreLibrary() {
   const [homes, setHomes] = useState([]);
 
   async function getHomes() {
     try {
-      let response = await axios.get("http://localhost:3636/homes/")
+      let response = await axios.get(`${apiUrl}/homes/`)
       console.log(response)
       setHomes(response.data)
       console.log(homes)
