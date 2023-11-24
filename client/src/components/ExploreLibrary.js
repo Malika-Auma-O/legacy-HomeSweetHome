@@ -3,6 +3,7 @@ import axios from "axios";
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 import "./ExploreLibrary.css";
 import { Link } from 'react-router-dom';
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -28,7 +29,7 @@ function ExploreLibrary() {
 
 
   return ( 
-    <div>
+    <Container>
       <h1>Discover all our homes in cities near and far</h1>
       <Row xs={1} md={5} className="g-1 mt-4 explore-card-row "> 
         {homes.map(home => (
@@ -49,7 +50,7 @@ function ExploreLibrary() {
           </Col>
         ))}
       </Row>
-    </div>
+    </Container>
   );
 }
 

@@ -40,7 +40,7 @@ function ExploreLibrary() {
 
 
   return ( 
-    <div>
+    <div >
       <Row xs={1} md={5} className="g-1 mt-4 explore-card-row "> 
         {homes.map(home => (
           <Col key={home._id} className="mb-4">
