@@ -1,82 +1,82 @@
 /* ExploreLibrary.css */
 
-.explore-card-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
-
+/* Custom card style */
 .explore-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.explore-card-img {
-  flex-shrink: 0;
-  height: 200px;
-  object-fit: cover;
-}
-
-.explore-card-body {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.explore-card-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  overflow: hidden; /* Hide overflowing content */
-  text-overflow: ellipsis; /* Add ellipsis for long titles */
-  white-space: nowrap; /* Prevent the title from wrapping to the next line */
-}
-
-.explore-card-text {
-  flex-grow: 1;
-  margin-bottom: 0.5rem;
-  overflow-y: auto;
-}
-
-.explore-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-}
-
-.explore-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-@media (max-width: 767px) {
-  .explore-card {
-    width: 100%;
+    border: none;
+    border-radius: 10px;
+    width: 250px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
   }
-}
+  
+  .explore-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .explore-card-img {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .explore-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .explore-card-text {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .explore-card-text:last-child {
+    margin-bottom: 0; /* Remove bottom margin from the last paragraph */
+  }
+  
+  .explore-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .explore-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Media query to adjust card layout on smaller screens */
+  @media (max-width: 767px) {
+    .explore-card {
+      width: 100%; /* Make cards occupy full width on smaller screens */
+    }
+  }
 
-.home-card{
-  width: 250px !important;
-  margin-left: 100px;
- 
-}
+  .home-card{
+    width: 250px !important;
+    margin-left: 100px;
+   
+  }
 
-.home-img{
-  height: 200px !important;
-}
+  .home-img{
+    height: 200px !important;
+  }
 
-.to-home {
-  cursor: pointer;
-  padding: 0 5px;
-  border-radius: 5px;
-  color: #0056b3;
-}
+  .to-home {
+    cursor: pointer;
+    padding: 0 5px;
+    border-radius: 5px;
+    color: #0056b3;
+  }
 
-.to-home:hover{
-  color: #007bff;
-}
-
+  .to-home:hover{
+    color: #007bff;
+  }
